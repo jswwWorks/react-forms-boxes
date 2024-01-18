@@ -1,5 +1,19 @@
 
-
+/**
+ *  Props:
+ *    
+ *
+ *  states:
+ *
+ *
+ *
+ *  renders:
+ *
+ *    BoxList -> NewBoxForm
+ *
+ *    Is rendered by BoxList, returns HTML form that gathers information to
+ *    give to BoxList which will help produce a new box with customization.
+ */
 function NewBoxForm(){
 
   function handleSubmit(evt){

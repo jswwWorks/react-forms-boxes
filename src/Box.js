@@ -13,9 +13,10 @@
  *
  *    Returns an HTML div element of a box with colors based on input props.
  */
-function Box({ backgroundColor, width, height }) {
+function Box({ backgroundColor, width, height, id, removeButton }) {
+  //debugger;
 
-  console.log('information about box in Box component', backgroundColor, width, height);
+  console.log('id, removebutton', id, removeButton);
 
   const style = {
     backgroundColor: backgroundColor,
@@ -23,9 +24,13 @@ function Box({ backgroundColor, width, height }) {
     height: height
   };
 
+  function handleRemoveButton(){
+    removeButton(id);
+  }
+
   return (
     <div className="Box" style={style}>
-
+      <button onClick={handleRemoveButton}>X</button>
     </div>
   );
 }

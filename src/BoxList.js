@@ -43,7 +43,8 @@ function BoxList() {
    *  For each box in boxes, renders a new box
   */
  function renderBoxes() {
-    return (
+ // debugger;
+  return (
       boxes.map(({id, width, height, backgroundColor}) =>
         <Box
           backgroundColor={backgroundColor}
@@ -51,6 +52,7 @@ function BoxList() {
           height={height}
           key={id}
           id={id}
+          removeButton={removeButton}
         />)
 
     );

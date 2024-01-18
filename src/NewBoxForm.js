@@ -1,7 +1,7 @@
-
+import { useState } from "react";
 /**
  *  Props:
- *    
+ *
  *
  *  states:
  *
@@ -14,14 +14,21 @@
  *    Is rendered by BoxList, returns HTML form that gathers information to
  *    give to BoxList which will help produce a new box with customization.
  */
-function NewBoxForm(){
+function NewBoxForm({ addBox }){
+
+  const [formData, setFormData] = useState({});
 
   function handleSubmit(evt){
+    evt.preventDefault();
 
   }
 
   function handleChange(evt){
-
+    const { name, value } = evt.target;
+    setFormData(currentFormData =>({
+      ...currentFormData,
+      [name]: value
+    }))
   }
 
   return (
@@ -30,7 +37,7 @@ function NewBoxForm(){
       <input type="text"
         id="backgroundColor"
         name="backgroundColor"
-        value=""
+        value={formData.backgroundColor}
         onChange={handleChange}
       />
 
@@ -38,7 +45,7 @@ function NewBoxForm(){
       <input type="text"
         id="width"
         name="width"
-        value=""
+        value={formData.width}
         onChange={handleChange}
       />
 
@@ -46,7 +53,7 @@ function NewBoxForm(){
       <input type="text"
         id="height"
         name="height"
-        value=""
+        value={formData.height}
         onChange={handleChange}
       />
 

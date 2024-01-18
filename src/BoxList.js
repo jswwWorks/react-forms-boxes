@@ -30,23 +30,28 @@ function BoxList() {
    *  Each box in array:
    *  {backgroundColor: "pink", height: 300, width: 200}
    */
-  function recordBoxFormInputs(newBoxDetails) {
+  function addBox(newBoxDetails) {
     setBoxes([...boxes, newBoxDetails]);
   }
 
   /**
    *  For each box in boxes, renders a new box
-   */
-  function makeBoxes() {
+  */
+ function renderBoxes() {
     return (
-      boxes.map(boxInfo => <Box boxParams={boxInfo} />)
+      boxes.map(box =>
+        <Box
+          backgroundColor={box.backgroundColor}
+          width={box.width}
+          height={box.height}
+        />)
     );
   }
 
   return (
     <div>
-      {makeBoxes()}
-      <NewBoxForm recordInfo={recordBoxFormInputs}/>
+      <NewBoxForm addBox={addBox}/>
+      {renderBoxes()}
     </div>
   );
 }

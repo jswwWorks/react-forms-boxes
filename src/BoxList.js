@@ -17,8 +17,6 @@ function BoxList() {
 
   // const [boxes, setBoxes] = useState([]);
   const [boxes, setBoxes] = useState([
-    {backgroundColor: "pink", height: 300, width: 200},
-    {backgroundColor: "green", height: 300, width: 200}
   ]);
 
   /**
@@ -30,7 +28,15 @@ function BoxList() {
    */
   function addBox(newBoxDetails) {
     console.log('new details about the box to add', newBoxDetails);
-    setBoxes([...boxes, newBoxDetails]);
+
+    newBoxDetails.id = uuid();
+    setBoxes(boxes => [...boxes, newBoxDetails]);
+  }
+
+  /** delete that box yo */
+  function removeButton(boxId){
+    //const targetBoxIdx = boxes.indexOf(boxId);
+    setBoxes(boxes => boxes.filter(box => box.id != boxId));
   }
 
   /**
@@ -38,13 +44,15 @@ function BoxList() {
   */
  function renderBoxes() {
     return (
-      boxes.map(box =>
+      boxes.map(({id, width, height, backgroundColor}) =>
         <Box
-          backgroundColor={box.backgroundColor}
-          width={box.width}
-          height={box.height}
-          key={uuid()}
+          backgroundColor={backgroundColor}
+          width={width}
+          height={height}
+          key={id}
+          id={id}
         />)
+
     );
   }
 

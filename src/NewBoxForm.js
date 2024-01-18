@@ -21,11 +21,12 @@ import { useState } from "react";
  */
 function NewBoxForm({ addBox }){
 
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     backgroundColor: "",
     height: "",
     width: ""
-  });
+  }
+  const [formData, setFormData] = useState(initialFormData);
 
   function handleSubmit(evt){
     evt.preventDefault();
@@ -33,12 +34,16 @@ function NewBoxForm({ addBox }){
     // Send form data into addBox function in BoxList
     console.log('new data to send back to Boxlist:', formData);
 
-    setFormData(Number(formData.height));
-    setFormData(Number(formData.width));
-    // formData.height = Number(formData.height);
-    // formData.width = Number(formData.width);
+    //convert height and width to Number types
+    const heightNum = Number(formData.height);
+    const widthNum = Number(formData.width);
 
-    addBox({formData});
+    addBox({
+      backgroundColor: formData.backgroundColor,
+      height: heightNum,
+      width: widthNum
+    });
+    setFormData(initialFormData);
   }
 
   function handleChange(evt){
@@ -64,7 +69,7 @@ function NewBoxForm({ addBox }){
       <input type="text"
         id="width"
         name="width"
-        value={Number(formData.width)}
+        value={formData.width}
         onChange={handleChange}
         required
       />
@@ -73,7 +78,7 @@ function NewBoxForm({ addBox }){
       <input type="text"
         id="height"
         name="height"
-        value={Number(formData.height)}
+        value={formData.height}
         onChange={handleChange}
         required
       />

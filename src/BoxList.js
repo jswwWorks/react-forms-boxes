@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import Box from './Box'
+import NewBoxForm from "./NewBoxForm";
 
 /**
  *  Props:
@@ -13,7 +15,8 @@ import React, {useState} from "react";
 function BoxList() {
 
   const [boxes, setBoxes] = useState([]);
-
+  const initialState = {backgroundColor: "", width: "", height:""}
+  const [formData, setFormData] = useState()
 
 
   /**
@@ -32,3 +35,5 @@ function BoxList() {
     </div>
   );
 }
+
+export default BoxList;

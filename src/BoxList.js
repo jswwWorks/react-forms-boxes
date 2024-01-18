@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Box from './Box'
 import NewBoxForm from "./NewBoxForm";
+import { v4 as uuid } from 'uuid';
 
 /**
  *  Props:
@@ -20,9 +21,6 @@ function BoxList() {
     {backgroundColor: "green", height: 300, width: 200}
   ]);
 
-  const initialState = {backgroundColor: "", width: "", height:""}
-  const [formData, setFormData] = useState()
-
   /**
    *  Grabs input values from NewBoxForm submission and updates state of
    *  boxes to include information about a new box to make.
@@ -31,6 +29,7 @@ function BoxList() {
    *  {backgroundColor: "pink", height: 300, width: 200}
    */
   function addBox(newBoxDetails) {
+    console.log('new details about the box to add', newBoxDetails);
     setBoxes([...boxes, newBoxDetails]);
   }
 
@@ -44,6 +43,7 @@ function BoxList() {
           backgroundColor={box.backgroundColor}
           width={box.width}
           height={box.height}
+          key={uuid()}
         />)
     );
   }
